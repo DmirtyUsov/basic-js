@@ -18,7 +18,7 @@ function getSeason(date) {
   if (date) {
     seasonIndex = -10;
     if (Object.prototype.toString.call(date) === "[object Date]") {
-      const numOwnPropertyName = Object.getOwnPropertyNames(date).length;
+      const numOwnPropertyName = Object.values(date).length;
       if (numOwnPropertyName || date.toString === 'Invalid Date') {
         seasonIndex = -10;
       } else {
