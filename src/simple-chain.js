@@ -14,14 +14,16 @@ const chainMaker = {
     return this;
   },
   removeLink(position) {
-    position -= 1; // zero index
     if ((typeof position !== 'number')
-      || (position < 0)
-      || (position > this.getLength()-1)
+      || (position < 1)
+      || (position > this.getLength())
    ) {
       this.chain = [];
       throw new Error('You can\'t remove incorrect link!');
+      // console.log({position}, "throw new Error('You can\'t remove incorrect link!')");
+      // return this;
     } else {
+      position -= 1; // zero index
       this.chain.splice(position, 1);
     }
     return this;
@@ -38,28 +40,6 @@ const chainMaker = {
   }
 };
 
-// console.log(
-//   chainMaker
-//   .addLink(3.14)
-//   .addLink(1)
-//   .addLink({ 0: 'first', 1: 'second', 'length': 2 })
-//   .removeLink(1)
-//   .addLink('DEF')
-//   .addLink({ 0: 'first', 1: 'second', 'length': 2 })
-//   .removeLink(1)
-//   .addLink(true)
-//   .addLink(false)
-//   .addLink(333)
-//   .reverseChain()
-//   .reverseChain()
-//   .finishChain()
-// )
-
-// chainMaker.addLink(1).addLink(2).addLink(3).removeLink(0),
-// chainMaker.addLink(1).addLink(2).addLink(3).removeLink('2nd'),
-// chainMaker.addLink(1).addLink(2).addLink(3).removeLink(-2),
-// chainMaker.addLink(1).addLink(2).addLink(3).removeLink(4)
-//( [object Object] )~~( DEF )~~( [object Object] )~~( true )~~( false )~~( 333 )
 module.exports = {
   chainMaker
 };
